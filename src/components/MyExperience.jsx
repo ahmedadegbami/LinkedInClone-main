@@ -48,14 +48,15 @@ const MyExperience = () => {
     e.preventDefault();
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/626fd65617c4e00015d7a083/experiences",
+        "http://localhost:3005/profile/ahmed141/experiences",
         {
           method: "POST",
           body: JSON.stringify({ ...addExperience }),
           headers: {
-            Authorization:
+            /*     Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
             "Content-Type": "application/json",
+ */
           },
         }
       );
