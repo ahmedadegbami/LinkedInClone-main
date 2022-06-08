@@ -33,19 +33,17 @@ const MyProfile = () => {
   useEffect(() => {
     profileData();
   }, []);
- 
   //this is the function that fetches the profile details of the user
   const profileData = async () => {
     let response = await fetch(
       "http://localhost:3005/profile/62a0539ca1fd05dc5a8c887a"
     );
-    console.log("response", response);
 
-    // let profileData = await response.json();
-    // //this is the state that handles the adding user profile details
-    // setProfile(profileData);
-    // //this is the state that handles the editing of the profile details
-    // setProfileFormData(profileData);
+    let profileData = await response.json();
+    //this is the state that handles the adding user profile details
+    setProfile(profileData);
+    //this is the state that handles the editing of the profile details
+    setProfileFormData(profileData);
   };
   //this is the function that handles the editing of the profile details
   const editData = async (e) => {
