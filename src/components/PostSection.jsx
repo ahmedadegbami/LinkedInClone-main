@@ -6,7 +6,7 @@ import { BiLike } from "react-icons/bi";
 import {
   RiShareForwardLine,
   RiSendPlaneFill,
-  RiMoreFill,
+  RiMoreFill
 } from "react-icons/ri";
 import { FcLike } from "react-icons/fc";
 import { IoMdGlobe } from "react-icons/io";
@@ -40,15 +40,18 @@ const PostSection = ({ post }) => {
 
   const fetchEditPost = async (e) => {
     e.preventDefault();
-    let response = await fetch("http://localhost:3005/posts/" + post._id, {
-      method: "PUT",
-      body: JSON.stringify(editPost),
-      headers: {
-        // Authorization:
-        //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
-        // "Content-Type": "application/json",
-      },
-    });
+    let response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/posts/" + post._id,
+      {
+        method: "PUT",
+        body: JSON.stringify(editPost),
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
+          "Content-Type": "application/json"
+        }
+      }
+    );
     if (response.ok) {
       alert("Post Edited Succesfully");
     }
@@ -65,8 +68,8 @@ const PostSection = ({ post }) => {
         body: dataImage,
         headers: {
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
-        },
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4"
+        }
       }
     );
     if (response.ok) {
@@ -84,8 +87,8 @@ const PostSection = ({ post }) => {
           headers: {
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
-            "Content-Type": "application/json",
-          },
+            "Content-Type": "application/json"
+          }
         }
       );
       if (response.ok) {
