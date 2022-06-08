@@ -23,16 +23,15 @@ const SingleExperience = ({ experience }) => {
     e.preventDefault();
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/626fd65617c4e00015d7a083/experiences/" +
-          experience._id,
+        "http://localhost:3005/profile/ahmed141/experiences/" + experience._id,
         {
           method: "PUT",
           body: JSON.stringify(formData),
           headers: {
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
       console.log(response);
@@ -49,16 +48,14 @@ const SingleExperience = ({ experience }) => {
     dataExp.append("experience", showExpImage);
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/626fd65617c4e00015d7a083/experiences/" +
-          experience._id +
-          "/picture",
+        "http://localhost:3005/profile/" + experience._id + "/image",
         {
           method: "POST",
           body: dataExp,
-          headers: {
+          /* headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZmZDY1NjE3YzRlMDAwMTVkN2EwODMiLCJpYXQiOjE2NTE0OTY1MzUsImV4cCI6MTY1MjcwNjEzNX0.8KY63vz_cG51-fBlBKeyzC8NE1kgqbjKuVVMCqVTllA"
-          }
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZmZDY1NjE3YzRlMDAwMTVkN2EwODMiLCJpYXQiOjE2NTE0OTY1MzUsImV4cCI6MTY1MjcwNjEzNX0.8KY63vz_cG51-fBlBKeyzC8NE1kgqbjKuVVMCqVTllA",
+          }, */
         }
       );
       if (response.ok) {
@@ -72,16 +69,15 @@ const SingleExperience = ({ experience }) => {
   const handleDelete = async () => {
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/626fd65617c4e00015d7a083/experiences/" +
-          experience._id,
+        "http://localhost:3005/profile/ahmed141/experiences/" + experience._id,
         {
           method: "DELETE",
           body: JSON.stringify(formData),
           headers: {
-            Authorization:
+            /*   Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZmZDY1NjE3YzRlMDAwMTVkN2EwODMiLCJpYXQiOjE2NTE0OTY1MzUsImV4cCI6MTY1MjcwNjEzNX0.8KY63vz_cG51-fBlBKeyzC8NE1kgqbjKuVVMCqVTllA",
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json", */
+          },
         }
       );
       if (response.ok) {
@@ -170,7 +166,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    role: e.target.value
+                    role: e.target.value,
                   })
                 }
               />
@@ -184,7 +180,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    company: e.target.value
+                    company: e.target.value,
                   })
                 }
               />
@@ -198,7 +194,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    startDate: e.target.value
+                    startDate: e.target.value,
                   })
                 }
               />
@@ -212,7 +208,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    endDate: e.target.value
+                    endDate: e.target.value,
                   })
                 }
               />
@@ -226,7 +222,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    area: e.target.value
+                    area: e.target.value,
                   })
                 }
               />
@@ -239,7 +235,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    description: e.target.value
+                    description: e.target.value,
                   })
                 }
               />
