@@ -23,8 +23,7 @@ const SingleExperience = ({ experience }) => {
     e.preventDefault();
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/626fd65617c4e00015d7a083/experiences/" +
-          experience._id,
+        "http://localhost:3005/profile/ahmed141/experiences/" + experience._id,
         {
           method: "PUT",
           body: JSON.stringify(formData),
@@ -46,19 +45,17 @@ const SingleExperience = ({ experience }) => {
     console.log("here is ID", _id);
     e.preventDefault();
     const dataExp = new FormData();
-    dataExp.append("experience", showExpImage);
+    dataExp.append("image", showExpImage);
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/626fd65617c4e00015d7a083/experiences/" +
-          experience._id +
-          "/picture",
+        "http://localhost:3005/profile/" + experience._id + "/image",
         {
           method: "POST",
-          body: dataExp,
-          headers: {
+          body: dataExp
+          /* headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZmZDY1NjE3YzRlMDAwMTVkN2EwODMiLCJpYXQiOjE2NTE0OTY1MzUsImV4cCI6MTY1MjcwNjEzNX0.8KY63vz_cG51-fBlBKeyzC8NE1kgqbjKuVVMCqVTllA"
-          }
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZmZDY1NjE3YzRlMDAwMTVkN2EwODMiLCJpYXQiOjE2NTE0OTY1MzUsImV4cCI6MTY1MjcwNjEzNX0.8KY63vz_cG51-fBlBKeyzC8NE1kgqbjKuVVMCqVTllA",
+          }, */
         }
       );
       if (response.ok) {
@@ -72,15 +69,14 @@ const SingleExperience = ({ experience }) => {
   const handleDelete = async () => {
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/626fd65617c4e00015d7a083/experiences/" +
-          experience._id,
+        "http://localhost:3005/profile/ahmed141/experiences/" + experience._id,
         {
           method: "DELETE",
           body: JSON.stringify(formData),
           headers: {
-            Authorization:
+            /*   Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZmZDY1NjE3YzRlMDAwMTVkN2EwODMiLCJpYXQiOjE2NTE0OTY1MzUsImV4cCI6MTY1MjcwNjEzNX0.8KY63vz_cG51-fBlBKeyzC8NE1kgqbjKuVVMCqVTllA",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json", */
           }
         }
       );

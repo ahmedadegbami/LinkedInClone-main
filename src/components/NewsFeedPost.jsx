@@ -13,7 +13,7 @@ const NewsFeedPost = () => {
   const handleShow = () => setShow(true);
 
   const [sendPost, setSendPost] = useState({
-    text: "",
+    text: ""
   });
 
   const [posts, setPosts] = useState([]);
@@ -22,7 +22,15 @@ const NewsFeedPost = () => {
   }, []);
 
   const getPost = async () => {
-    let response = await fetch("http://localhost:3005/posts");
+    let response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/posts/",
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4"
+        }
+      }
+    );
     let postData = await response.json();
     // console.log(postData)
     setPosts(postData);
@@ -41,8 +49,8 @@ const NewsFeedPost = () => {
           headers: {
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
-            "Content-Type": "application/json",
-          },
+            "Content-Type": "application/json"
+          }
         }
       );
       if (response.ok) {
@@ -51,7 +59,7 @@ const NewsFeedPost = () => {
         alert("success");
         setShow(false);
         setSendPost({
-          text: "",
+          text: ""
         });
       } else {
         alert("error else");

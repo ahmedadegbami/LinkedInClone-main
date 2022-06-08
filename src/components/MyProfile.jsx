@@ -36,14 +36,9 @@ const MyProfile = () => {
   //this is the function that fetches the profile details of the user
   const profileData = async () => {
     let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/me",
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4"
-        }
-      }
+      "http://localhost:3005/profile/62a0539ca1fd05dc5a8c887a"
     );
+
     let profileData = await response.json();
     //this is the state that handles the adding user profile details
     setProfile(profileData);
@@ -54,39 +49,38 @@ const MyProfile = () => {
   const editData = async (e) => {
     e.preventDefault();
     let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/",
+      "http://localhost:3005/profile/62a0539ca1fd05dc5a8c887a",
       {
         method: "PUT",
         body: JSON.stringify(profileFormData),
         headers: {
-          "content-type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4"
+          "content-type": "application/json"
         }
       }
     );
     console.log(response);
     setShow(false);
   };
-  //this is the function that handles the upload of user image
+
+  // this is the function that handles the upload of user image
   const uploadImage = async (e) => {
     e.preventDefault();
     //this is the state that handles the uploading of the image, the FormData method is used to handle image upload
     //and append the image to the form
     const data = new FormData();
-    data.append("profile", showImage);
+    data.append("image", showImage);
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/626fd65617c4e00015d7a083/picture",
+        "http://localhost:3005/profile/62a0539ca1fd05dc5a8c887a/profileImage",
         {
           method: "POST",
-          body: data,
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4"
-          }
+          body: data
+          // headers: {
+          //   // "content-type": "multipart/form-data"
+          // }
         }
       );
+
       if (response.ok) {
         alert("Image Uploaded Successfully");
       }
@@ -94,6 +88,7 @@ const MyProfile = () => {
       alert("error");
     }
   };
+
   return (
     <>
       <Wrapper>
