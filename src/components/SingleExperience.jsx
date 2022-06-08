@@ -45,7 +45,7 @@ const SingleExperience = ({ experience }) => {
     console.log("here is ID", _id);
     e.preventDefault();
     const dataExp = new FormData();
-    dataExp.append("experience", showExpImage);
+    dataExp.append("image", showExpImage);
     try {
       let response = await fetch(
         "http://localhost:3005/profile/" + experience._id + "/image",
