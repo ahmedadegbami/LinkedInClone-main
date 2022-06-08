@@ -16,7 +16,7 @@ const MyExperience = () => {
     startDate: "",
     endDate: "",
     description: "",
-    area: ""
+    area: "",
   });
 
   useEffect(() => {
@@ -31,13 +31,13 @@ const MyExperience = () => {
   // this is the function that fetches user experience
   const fetchExperience = async () => {
     let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/626fd65617c4e00015d7a083/experiences",
-      {
+      "http://localhost:3005/profile/ahmed141/experiences"
+      /*  {
         headers: {
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4"
-        }
-      }
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
+        },
+      } */
     );
     let responseData = await response.json();
     console.log(responseData);
@@ -55,8 +55,8 @@ const MyExperience = () => {
           headers: {
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
       console.log(response);
@@ -68,7 +68,7 @@ const MyExperience = () => {
           company: "",
           startDate: "",
           endDate: "",
-          area: ""
+          area: "",
         });
       } else {
         alert("error");
@@ -132,7 +132,7 @@ const MyExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    company: e.target.value
+                    company: e.target.value,
                   })
                 }
               />
@@ -146,7 +146,7 @@ const MyExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    startDate: e.target.value
+                    startDate: e.target.value,
                   })
                 }
               />
@@ -160,7 +160,7 @@ const MyExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    endDate: e.target.value
+                    endDate: e.target.value,
                   })
                 }
               />
@@ -184,7 +184,7 @@ const MyExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    description: e.target.value
+                    description: e.target.value,
                   })
                 }
               />
