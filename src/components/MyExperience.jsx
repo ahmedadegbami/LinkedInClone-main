@@ -53,14 +53,16 @@ const MyExperience = () => {
           method: "POST",
           body: JSON.stringify({ ...addExperience }),
           headers: {
-            /*     Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
+            /*   Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
             "Content-Type": "application/json",
- */
+           */
           },
         }
       );
-      console.log(response);
+      console.log("ADDExperience: ", addExperience);
+      /* console.log("BODY:", body); */
+      console.log("RESPONSE", response);
       if (response.ok) {
         console.log(response);
         alert("ok");
