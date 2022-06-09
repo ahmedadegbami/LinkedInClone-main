@@ -18,16 +18,21 @@ const SingleExperience = ({ experience }) => {
   const handleClose2 = () => setShow2(false);
   const handleShow2 = () => setShow2(true);
 
+  console.log("exp", experience._id);
+
   const editExperience = async (e, _id) => {
     console.log("here is ID", _id);
     e.preventDefault();
     try {
       let response = await fetch(
-        "https://backend-linkedin-buildweek.herokuapp.com/profile/ahmed141/experiences/" +
+        "https://backend-linkedin-buildweek.herokuapp.com/experience/" +
           experience._id,
         {
           method: "PUT",
           body: JSON.stringify(formData),
+          headers: {
+            "content-type": "application/json"
+          }
           /*     headers: {
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
@@ -35,7 +40,7 @@ const SingleExperience = ({ experience }) => {
           }, */
         }
       );
-      console.log(response);
+      console.log("response", response);
       setShow(false);
     } catch (error) {
       alert("error", error);
@@ -54,7 +59,7 @@ const SingleExperience = ({ experience }) => {
           "/image",
         {
           method: "POST",
-          body: dataExp,
+          body: dataExp
           /* headers: {
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZmZDY1NjE3YzRlMDAwMTVkN2EwODMiLCJpYXQiOjE2NTE0OTY1MzUsImV4cCI6MTY1MjcwNjEzNX0.8KY63vz_cG51-fBlBKeyzC8NE1kgqbjKuVVMCqVTllA",
@@ -81,7 +86,7 @@ const SingleExperience = ({ experience }) => {
             /*   Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZmZDY1NjE3YzRlMDAwMTVkN2EwODMiLCJpYXQiOjE2NTE0OTY1MzUsImV4cCI6MTY1MjcwNjEzNX0.8KY63vz_cG51-fBlBKeyzC8NE1kgqbjKuVVMCqVTllA",
             "Content-Type": "application/json", */
-          },
+          }
         }
       );
       if (response.ok) {
@@ -170,7 +175,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    role: e.target.value,
+                    role: e.target.value
                   })
                 }
               />
@@ -184,7 +189,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    company: e.target.value,
+                    company: e.target.value
                   })
                 }
               />
@@ -198,7 +203,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    startDate: e.target.value,
+                    startDate: e.target.value
                   })
                 }
               />
@@ -212,7 +217,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    endDate: e.target.value,
+                    endDate: e.target.value
                   })
                 }
               />
@@ -226,7 +231,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    area: e.target.value,
+                    area: e.target.value
                   })
                 }
               />
@@ -239,7 +244,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    description: e.target.value,
+                    description: e.target.value
                   })
                 }
               />
