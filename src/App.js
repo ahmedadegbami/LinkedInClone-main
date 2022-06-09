@@ -16,7 +16,7 @@ const App = () => {
         <MyNavBar />
         <Routes>
           <Route path="/" element={<ProfileHome />} />
-          <Route path="/details/:username" element={<Details />} />
+          <Route path="/details/:username/:id" element={<Details />} />
           <Route path="/feed" element={<NewsFeed />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
