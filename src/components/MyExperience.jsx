@@ -57,6 +57,15 @@ const MyExperience = () => {
           method: "POST",
           body: JSON.stringify(addExperience),
           headers: {
+
+            "Content-Type": "application/json",
+          },
+
+          /* headers: {
+               Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
+            "Content-Type": "application/json",
+=======
             "Content-Type": "application/json"
           }
 
@@ -64,6 +73,7 @@ const MyExperience = () => {
                Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
             "Content-Type": "application/json",
+
            
           }, */
         }
@@ -122,6 +132,9 @@ const MyExperience = () => {
               >
                 Experience
               </Card.Title>
+
+              <Button onClick={downloadPdf}>PDF</Button>
+
               <Button onClick={downloadCSV}>CSV</Button>
               <div>
                 <BiPlus size="1.5rem" onClick={handleShow} />
