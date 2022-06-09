@@ -6,7 +6,7 @@ import { BiLike } from "react-icons/bi";
 import {
   RiShareForwardLine,
   RiSendPlaneFill,
-  RiMoreFill
+  RiMoreFill,
 } from "react-icons/ri";
 import { FcLike } from "react-icons/fc";
 import { IoMdGlobe } from "react-icons/io";
@@ -41,15 +41,13 @@ const PostSection = ({ post }) => {
   const fetchEditPost = async (e) => {
     e.preventDefault();
     let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/posts/" + post._id,
+      "https://backend-linkedin-buildweek.herokuapp.com/posts/" + post._id,
       {
         method: "PUT",
         body: JSON.stringify(editPost),
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
       }
     );
     if (response.ok) {
@@ -60,16 +58,14 @@ const PostSection = ({ post }) => {
   const addPostImage = async (e) => {
     e.preventDefault();
     const dataImage = new FormData();
-    dataImage.append("post", showPostImage);
+    dataImage.append("image", showPostImage);
     let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/posts/" + post._id,
+      "https://backend-linkedin-buildweek.herokuapp.com/posts/" +
+        post._id +
+        "/image",
       {
         method: "POST",
         body: dataImage,
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4"
-        }
       }
     );
     if (response.ok) {
@@ -80,15 +76,13 @@ const PostSection = ({ post }) => {
   const deletePost = async () => {
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/posts/" + post._id,
+        "https://backend-linkedin-buildweek.herokuapp.com/posts/" + post._id,
         {
           method: "DELETE",
           body: JSON.stringify(editPost),
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
       if (response.ok) {

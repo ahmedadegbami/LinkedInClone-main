@@ -23,15 +23,16 @@ const SingleExperience = ({ experience }) => {
     e.preventDefault();
     try {
       let response = await fetch(
-        "http://localhost:3005/profile/ahmed141/experiences/" + experience._id,
+        "https://backend-linkedin-buildweek.herokuapp.com/profile/ahmed141/experiences/" +
+          experience._id,
         {
           method: "PUT",
           body: JSON.stringify(formData),
-          headers: {
+          /*     headers: {
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          }, */
         }
       );
       console.log(response);
@@ -48,10 +49,12 @@ const SingleExperience = ({ experience }) => {
     dataExp.append("image", showExpImage);
     try {
       let response = await fetch(
-        "http://localhost:3005/profile/" + experience._id + "/image",
+        "https://backend-linkedin-buildweek.herokuapp.com/profile/" +
+          experience._id +
+          "/image",
         {
           method: "POST",
-          body: dataExp
+          body: dataExp,
           /* headers: {
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZmZDY1NjE3YzRlMDAwMTVkN2EwODMiLCJpYXQiOjE2NTE0OTY1MzUsImV4cCI6MTY1MjcwNjEzNX0.8KY63vz_cG51-fBlBKeyzC8NE1kgqbjKuVVMCqVTllA",
@@ -69,7 +72,8 @@ const SingleExperience = ({ experience }) => {
   const handleDelete = async () => {
     try {
       let response = await fetch(
-        "http://localhost:3005/profile/ahmed141/experiences/" + experience._id,
+        "https://backend-linkedin-buildweek.herokuapp.com/profile/ahmed141/experiences/" +
+          experience._id,
         {
           method: "DELETE",
           body: JSON.stringify(formData),
@@ -77,7 +81,7 @@ const SingleExperience = ({ experience }) => {
             /*   Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjZmZDY1NjE3YzRlMDAwMTVkN2EwODMiLCJpYXQiOjE2NTE0OTY1MzUsImV4cCI6MTY1MjcwNjEzNX0.8KY63vz_cG51-fBlBKeyzC8NE1kgqbjKuVVMCqVTllA",
             "Content-Type": "application/json", */
-          }
+          },
         }
       );
       if (response.ok) {
@@ -166,7 +170,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    role: e.target.value
+                    role: e.target.value,
                   })
                 }
               />
@@ -180,7 +184,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    company: e.target.value
+                    company: e.target.value,
                   })
                 }
               />
@@ -194,7 +198,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    startDate: e.target.value
+                    startDate: e.target.value,
                   })
                 }
               />
@@ -208,7 +212,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    endDate: e.target.value
+                    endDate: e.target.value,
                   })
                 }
               />
@@ -222,7 +226,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    area: e.target.value
+                    area: e.target.value,
                   })
                 }
               />
@@ -235,7 +239,7 @@ const SingleExperience = ({ experience }) => {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    description: e.target.value
+                    description: e.target.value,
                   })
                 }
               />

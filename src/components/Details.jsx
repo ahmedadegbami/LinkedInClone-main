@@ -6,29 +6,26 @@ import { BiPencil } from "react-icons/bi";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import MySideBar from "./MySideBar";
-import MyExperience from "./MyExperience";
+import DetailsExperience from "./DetailsExperience";
 
 //This component is displays details of the  profile the user clicks on
 
 const Details = () => {
   const [profile, setProfile] = useState("");
   const params = useParams();
+  // console.log("parmssss", params.username);
+  // console.log("iddddd", params.id);
 
   useEffect(() => {
     profileData();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params.Id]);
+  }, [params.username]);
 
   const profileData = async () => {
     let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/" + params.Id,
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4"
-        }
-      }
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/" +
+        params.username
     );
     let profileData = await response.json();
 
@@ -101,7 +98,7 @@ const Details = () => {
                 </Container>
               </Body>
             </Wrapper>
-            <MyExperience />
+            <DetailsExperience />
           </Col>
           <Col md={4}>
             <MySideBar />

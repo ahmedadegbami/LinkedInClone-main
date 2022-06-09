@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 //This component is displays the user experience details, the user can add new experience details,
 // the user can edit and delete the experience details, the user can also add new experience image
 
-const MyExperience = () => {
+const DetailsExperience = () => {
   const params = useParams();
 
   const [experiences, setExperiences] = useState([]);
@@ -24,10 +24,9 @@ const MyExperience = () => {
 
   useEffect(() => {
     fetchExperience();
-    // downloadPdf();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [params.username]);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -35,7 +34,8 @@ const MyExperience = () => {
   // this is the function that fetches user experience
   const fetchExperience = async () => {
     let response = await fetch(
-      "https://backend-linkedin-buildweek.herokuapp.com/experience/ahmed141"
+      "https://backend-linkedin-buildweek.herokuapp.com/experience/" +
+        params.username
       /*  {
         headers: {
           Authorization:
@@ -52,7 +52,9 @@ const MyExperience = () => {
     e.preventDefault();
     try {
       let response = await fetch(
-        "https://backend-linkedin-buildweek.herokuapp.com/profile/ahmed141/experiences",
+        "https://backend-linkedin-buildweek.herokuapp.com/experiences/" +
+          params.username,
+
         {
           method: "POST",
           body: JSON.stringify(addExperience),
@@ -64,7 +66,7 @@ const MyExperience = () => {
                Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
             "Content-Type": "application/json",
-           
+
           }, */
         }
       );
@@ -91,9 +93,10 @@ const MyExperience = () => {
 
   const downloadPdf = async () => {
     let response = await fetch(
-      "https://backend-linkedin-buildweek.herokuapp.com/profile/62a055ba8d11baa796c213aa/cv"
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/" +
+        params.id +
+        "/cv"
     );
-
     console.log("responseData", response);
     // open the response.url in a new tab
     window.open(response.url);
@@ -101,7 +104,9 @@ const MyExperience = () => {
 
   const downloadCSV = async () => {
     let response = await fetch(
-      "https://backend-linkedin-buildweek.herokuapp.com/profile/ahmed141/csv"
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/" +
+        params.username +
+        "/csv"
     );
 
     console.log("responseData", response);
@@ -232,7 +237,8 @@ const MyExperience = () => {
   );
 };
 
-export default MyExperience;
+export default DetailsExperience;
+
 const Wrapper = styled.div`
   position: relative;
   background-color: rgb(255, 255, 255);
