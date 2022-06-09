@@ -31,7 +31,7 @@ const MyExperience = () => {
   // this is the function that fetches user experience
   const fetchExperience = async () => {
     let response = await fetch(
-      "http://localhost:3005/profile/ahmed141/experiences"
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/ahmed141/experiences"
       /*  {
         headers: {
           Authorization:
