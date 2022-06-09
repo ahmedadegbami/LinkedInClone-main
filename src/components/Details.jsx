@@ -13,7 +13,8 @@ import DetailsExperience from "./DetailsExperience";
 const Details = () => {
   const [profile, setProfile] = useState("");
   const params = useParams();
-  console.log("parmssss", params.username);
+  // console.log("parmssss", params.username);
+  // console.log("iddddd", params.id);
 
   useEffect(() => {
     profileData();

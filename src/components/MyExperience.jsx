@@ -3,11 +3,14 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { BiPlus } from "react-icons/bi";
 import SingleExperience from "./SingleExperience";
+import { useParams } from "react-router-dom";
 
 //This component is displays the user experience details, the user can add new experience details,
 // the user can edit and delete the experience details, the user can also add new experience image
 
 const MyExperience = () => {
+  const params = useParams();
+
   const [experiences, setExperiences] = useState([]);
 
   const [addExperience, setAddExperience] = useState({
@@ -16,11 +19,12 @@ const MyExperience = () => {
     startDate: "",
     endDate: "",
     description: "",
-    area: "",
+    area: ""
   });
 
   useEffect(() => {
     fetchExperience();
+    // downloadPdf();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -31,7 +35,7 @@ const MyExperience = () => {
   // this is the function that fetches user experience
   const fetchExperience = async () => {
     let response = await fetch(
-      "https://backend-linkedin-buildweek.herokuapp.com/profile/ahmed141/experiences"
+      "https://backend-linkedin-buildweek.herokuapp.com/experience/ahmed141"
       /*  {
         headers: {
           Authorization:
@@ -53,8 +57,8 @@ const MyExperience = () => {
           method: "POST",
           body: JSON.stringify(addExperience),
           headers: {
-            "Content-Type": "application/json",
-          },
+            "Content-Type": "application/json"
+          }
 
           /* headers: {
                Authorization:
@@ -75,7 +79,7 @@ const MyExperience = () => {
           company: "",
           startDate: "",
           endDate: "",
-          area: "",
+          area: ""
         });
       } else {
         alert("error");
@@ -84,6 +88,20 @@ const MyExperience = () => {
       alert("error", error);
     }
   };
+
+  const downloadPdf = async () => {
+    let response = await fetch(
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/62a055ba8d11baa796c213aa/cv"
+    );
+
+    console.log("responseData", response);
+    // open the response.url in a new tab
+    window.open(response.url);
+  };
+
+  // const downloadPdf = () => {
+  //   alert("hey");
+  // };
 
   return (
     <>
@@ -94,6 +112,7 @@ const MyExperience = () => {
               <Card.Title
                 className="font-weight-bold"
                 style={{ fontSize: "16px" }}
+                onClick={downloadPdf}
               >
                 Experience
               </Card.Title>
@@ -139,7 +158,7 @@ const MyExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    company: e.target.value,
+                    company: e.target.value
                   })
                 }
               />
@@ -153,7 +172,7 @@ const MyExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    startDate: e.target.value,
+                    startDate: e.target.value
                   })
                 }
               />
@@ -167,7 +186,7 @@ const MyExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    endDate: e.target.value,
+                    endDate: e.target.value
                   })
                 }
               />
@@ -191,7 +210,7 @@ const MyExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    description: e.target.value,
+                    description: e.target.value
                   })
                 }
               />

@@ -26,7 +26,7 @@ const DetailsExperience = () => {
     fetchExperience();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [params.username]);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -34,9 +34,8 @@ const DetailsExperience = () => {
   // this is the function that fetches user experience
   const fetchExperience = async () => {
     let response = await fetch(
-      "https://backend-linkedin-buildweek.herokuapp.com/profile/" +
-        params.username +
-        "/experiences"
+      "https://backend-linkedin-buildweek.herokuapp.com/experience/" +
+        params.username
       /*  {
         headers: {
           Authorization:
@@ -53,7 +52,9 @@ const DetailsExperience = () => {
     e.preventDefault();
     try {
       let response = await fetch(
-        "https://backend-linkedin-buildweek.herokuapp.com/profile/ahmed141/experiences",
+        "https://backend-linkedin-buildweek.herokuapp.com/experiences/" +
+          params.username,
+
         {
           method: "POST",
           body: JSON.stringify(addExperience),
@@ -90,6 +91,17 @@ const DetailsExperience = () => {
     }
   };
 
+  const downloadPdf = async () => {
+    let response = await fetch(
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/" +
+        params.id +
+        "/cv"
+    );
+    console.log("responseData", response);
+    // open the response.url in a new tab
+    window.open(response.url);
+  };
+
   return (
     <>
       <Wrapper className="my-2">
@@ -99,6 +111,7 @@ const DetailsExperience = () => {
               <Card.Title
                 className="font-weight-bold"
                 style={{ fontSize: "16px" }}
+                onClick={downloadPdf}
               >
                 Experience
               </Card.Title>
@@ -212,6 +225,7 @@ const DetailsExperience = () => {
 };
 
 export default DetailsExperience;
+
 const Wrapper = styled.div`
   position: relative;
   background-color: rgb(255, 255, 255);
