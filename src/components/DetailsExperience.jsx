@@ -102,6 +102,18 @@ const DetailsExperience = () => {
     window.open(response.url);
   };
 
+  const downloadCSV = async () => {
+    let response = await fetch(
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/" +
+        params.username +
+        "/csv"
+    );
+
+    console.log("responseData", response);
+    // open the response.url in a new tab
+    window.open(response.url);
+  };
+
   return (
     <>
       <Wrapper className="my-2">
@@ -115,6 +127,7 @@ const DetailsExperience = () => {
               >
                 Experience
               </Card.Title>
+              <Button onClick={downloadCSV}>CSV</Button>
               <div>
                 <BiPlus size="1.5rem" onClick={handleShow} />
               </div>
