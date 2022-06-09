@@ -71,7 +71,7 @@ const MyProfile = () => {
     data.append("image", showImage);
     try {
       let response = await fetch(
-        "https://backend-linkedin-buildweek.herokuapp.com/profile/62a0539ca1fd05dc5a8c887a/profileImage",
+        "https://backend-linkedin-buildweek.herokuapp.com/profile/62a055ba8d11baa796c213aa/profileImage",
         {
           method: "POST",
           body: data
