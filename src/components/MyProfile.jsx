@@ -36,7 +36,7 @@ const MyProfile = () => {
   //this is the function that fetches the profile details of the user
   const profileData = async () => {
     let response = await fetch(
-      "http://localhost:3005/profile/62a0539ca1fd05dc5a8c887a"
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/62a0539ca1fd05dc5a8c887a"
     );
 
     let profileData = await response.json();
@@ -49,7 +49,7 @@ const MyProfile = () => {
   const editData = async (e) => {
     e.preventDefault();
     let response = await fetch(
-      "http://localhost:3005/profile/62a0539ca1fd05dc5a8c887a",
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/62a0539ca1fd05dc5a8c887a",
       {
         method: "PUT",
         body: JSON.stringify(profileFormData),
@@ -68,16 +68,16 @@ const MyProfile = () => {
     //this is the state that handles the uploading of the image, the FormData method is used to handle image upload
     //and append the image to the form
     const data = new FormData();
-    data.append("profile", showImage);
+    data.append("image", showImage);
     try {
       let response = await fetch(
-        "http://localhost:3005/profile/62a0539ca1fd05dc5a8c887a/image",
+        "https://backend-linkedin-buildweek.herokuapp.com/profile/62a0539ca1fd05dc5a8c887a/profileImage",
         {
           method: "POST",
-          body: data,
-          headers: {
-            "content-type": "multipart/form-data"
-          }
+          body: data
+          // headers: {
+          //   // "content-type": "multipart/form-data"
+          // }
         }
       );
 

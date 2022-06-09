@@ -23,15 +23,16 @@ const SingleExperience = ({ experience }) => {
     e.preventDefault();
     try {
       let response = await fetch(
-        "http://localhost:3005/profile/ahmed141/experiences/" + experience._id,
+        "https://backend-linkedin-buildweek.herokuapp.com/profile/ahmed141/experiences/" +
+          experience._id,
         {
           method: "PUT",
           body: JSON.stringify(formData),
-          headers: {
+          /*     headers: {
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4",
             "Content-Type": "application/json",
-          },
+          }, */
         }
       );
       console.log(response);
@@ -48,7 +49,9 @@ const SingleExperience = ({ experience }) => {
     dataExp.append("image", showExpImage);
     try {
       let response = await fetch(
-        "http://localhost:3005/profile/" + experience._id + "/image",
+        "https://backend-linkedin-buildweek.herokuapp.com/profile/" +
+          experience._id +
+          "/image",
         {
           method: "POST",
           body: dataExp,
@@ -69,7 +72,8 @@ const SingleExperience = ({ experience }) => {
   const handleDelete = async () => {
     try {
       let response = await fetch(
-        "http://localhost:3005/profile/ahmed141/experiences/" + experience._id,
+        "https://backend-linkedin-buildweek.herokuapp.com/profile/ahmed141/experiences/" +
+          experience._id,
         {
           method: "DELETE",
           body: JSON.stringify(formData),

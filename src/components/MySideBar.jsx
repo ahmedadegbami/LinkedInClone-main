@@ -70,7 +70,7 @@ const MySideBar = () => {
           {profiles.splice(1, showmore).map((profile) => (
             <Row key={profile._id}>
               <Col sm={3}>
-                <Link to={"/details/" + profile._id}>
+                <Link to={"/details/" + profile.username + "/" + profile._id}>
                   <Image
                     src={profile.image}
                     rounded
@@ -81,7 +81,7 @@ const MySideBar = () => {
               </Col>
               <Col sm={9}>
                 <div>
-                  <Link to={"/details/" + profile._id}>
+                  <Link to={"/details/" + profile.username + "/" + profile._id}>
                     <h6
                       className="font-weight-bold mb-0"
                       style={{ fontSize: "14px", lineHeight: "1.4" }}
@@ -105,7 +105,7 @@ const MySideBar = () => {
                     style={{
                       borderRadius: "50px",
                       fontSize: "16px",
-                      width: "100px",
+                      width: "100px"
                     }}
                     variant="outline-dark"
                     className="font-weight-bold mb-2 text-muted p-1"
@@ -157,7 +157,7 @@ const MySideBar = () => {
           {profiles.splice(0, showmore1).map((profile) => (
             <Row key={profile._id}>
               <Col sm={3}>
-                <Link to={"/details/" + profile._id}>
+                <Link to={"/details/" + profile.username + "/" + profile._id}>
                   <Image
                     src={profile.image}
                     rounded
@@ -168,7 +168,7 @@ const MySideBar = () => {
               </Col>
               <Col sm={9}>
                 <div>
-                  <Link to={"/details/" + profile._id}>
+                  <Link to={"/details/" + profile.username + "/" + profile._id}>
                     <h6
                       className="font-weight-bold mb-0"
                       style={{ fontSize: "14px", lineHeight: "1.4" }}
@@ -192,7 +192,7 @@ const MySideBar = () => {
                     style={{
                       borderRadius: "50px",
                       fontSize: "16px",
-                      width: "100px",
+                      width: "100px"
                     }}
                     variant="outline-dark"
                     className="font-weight-bold mb-2 text-muted p-1"
