@@ -74,6 +74,7 @@ const DetailsExperience = () => {
       console.log("RESPONSE", response);
       if (response.ok) {
         console.log(response);
+        window.location.reload();
         alert("ok");
         setAddExperience({
           role: "",

@@ -43,6 +43,7 @@ const SingleExperience = ({ experience }) => {
           }, */
         }
       );
+      window.location.reload();
       console.log("response", response);
       setShow(false);
     } catch (error) {
@@ -70,6 +71,7 @@ const SingleExperience = ({ experience }) => {
         }
       );
       if (response.ok) {
+        window.location.reload();
         alert("Image Uploaded Successfully");
       }
     } catch (error) {
@@ -93,7 +95,7 @@ const SingleExperience = ({ experience }) => {
         }
       );
       if (response.ok) {
-        window.location = "/";
+        window.location.reload();
         alert("Deleted Succesfully");
       }
       // navigate(-1);
@@ -154,6 +156,7 @@ const SingleExperience = ({ experience }) => {
                 size="1.1rem"
                 color="black"
                 onClick={() => setShow(true)}
+                style={{ cursor: "pointer" }}
               />
             )}
           </div>
