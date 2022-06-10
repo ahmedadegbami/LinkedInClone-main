@@ -1,16 +1,13 @@
-import { Card, Modal, Form, Button } from "react-bootstrap";
+import { Card, Modal, Form, Button, Badge } from "react-bootstrap";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { BiPlus } from "react-icons/bi";
 import SingleExperience from "./SingleExperience";
-import { useParams } from "react-router-dom";
 
 //This component is displays the user experience details, the user can add new experience details,
 // the user can edit and delete the experience details, the user can also add new experience image
 
 const MyExperience = () => {
-  const params = useParams();
-
   const [experiences, setExperiences] = useState([]);
 
   const [addExperience, setAddExperience] = useState({
@@ -57,9 +54,8 @@ const MyExperience = () => {
           method: "POST",
           body: JSON.stringify(addExperience),
           headers: {
-
-            "Content-Type": "application/json",
-          },
+            "Content-Type": "application/json"
+          }
 
           /* headers: {
                Authorization:
@@ -133,9 +129,22 @@ const MyExperience = () => {
                 Experience
               </Card.Title>
 
-              <Button onClick={downloadPdf}>PDF</Button>
+              <Badge
+                variant="danger"
+                onClick={downloadPdf}
+                style={{ cursor: "pointer" }}
+              >
+                pdf
+              </Badge>
 
-              <Button onClick={downloadCSV}>CSV</Button>
+              <Badge
+                variant="primary"
+                onClick={downloadCSV}
+                style={{ cursor: "pointer" }}
+              >
+                csv
+              </Badge>
+
               <div>
                 <BiPlus size="1.5rem" onClick={handleShow} />
               </div>
