@@ -18,7 +18,7 @@ const DetailsExperience = () => {
     startDate: "",
     endDate: "",
     description: "",
-    area: ""
+    area: "",
   });
 
   useEffect(() => {
@@ -58,8 +58,8 @@ const DetailsExperience = () => {
           method: "POST",
           body: JSON.stringify(addExperience),
           headers: {
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
 
           /* headers: {
                Authorization:
@@ -81,7 +81,7 @@ const DetailsExperience = () => {
           company: "",
           startDate: "",
           endDate: "",
-          area: ""
+          area: "",
         });
       } else {
         alert("error");
@@ -127,14 +127,14 @@ const DetailsExperience = () => {
               >
                 Experience
               </Card.Title>
-              <Badge
+              {/*               <Badge
                 variant="danger"
                 onClick={downloadPdf}
                 style={{ cursor: "pointer" }}
               >
                 pdf
               </Badge>
-
+ */}
               <Badge
                 variant="primary"
                 onClick={downloadCSV}
@@ -181,7 +181,7 @@ const DetailsExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    company: e.target.value
+                    company: e.target.value,
                   })
                 }
               />
@@ -195,7 +195,7 @@ const DetailsExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    startDate: e.target.value
+                    startDate: e.target.value,
                   })
                 }
               />
@@ -209,7 +209,7 @@ const DetailsExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    endDate: e.target.value
+                    endDate: e.target.value,
                   })
                 }
               />
@@ -233,7 +233,7 @@ const DetailsExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    description: e.target.value
+                    description: e.target.value,
                   })
                 }
               />

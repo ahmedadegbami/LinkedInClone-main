@@ -132,13 +132,13 @@ const MyExperience = () => {
                 Experience
               </Card.Title>
 
-              <Badge
+              {/*               <Badge
                 variant="danger"
                 onClick={downloadPdf}
                 style={{ cursor: "pointer" }}
               >
                 pdf
-              </Badge>
+              </Badge> */}
 
               <Badge
                 variant="primary"

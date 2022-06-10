@@ -1,14 +1,24 @@
-import { Container, Row, Col, Modal, Button, Form } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Modal,
+  Button,
+  Form,
+  Badge,
+} from "react-bootstrap";
 import React from "react";
 import styled from "styled-components";
 import { BiPencil } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import MyExperience from "./MyExperience";
+import { useParams } from "react-router-dom";
 
 //This component is displays details of the  profile details of the user
 
 const MyProfile = () => {
+  const params = useParams();
   const [profile, setProfile] = useState("");
   const [showImage, setShowImage] = useState(null);
 
@@ -27,7 +37,7 @@ const MyProfile = () => {
     email: "",
     bio: "",
     title: "",
-    area: ""
+    area: "",
   });
 
   useEffect(() => {
@@ -54,8 +64,8 @@ const MyProfile = () => {
         method: "PUT",
         body: JSON.stringify(profileFormData),
         headers: {
-          "content-type": "application/json"
-        }
+          "content-type": "application/json",
+        },
       }
     );
     console.log(response);
@@ -78,7 +88,7 @@ const MyProfile = () => {
         "https://backend-linkedin-buildweek.herokuapp.com/profile/62a055ba8d11baa796c213aa/profileImage",
         {
           method: "POST",
-          body: data
+          body: data,
           // headers: {
           //   // "content-type": "multipart/form-data"
           // }
@@ -92,6 +102,16 @@ const MyProfile = () => {
     } catch (error) {
       alert("error");
     }
+  };
+
+  const downloadPdf = async () => {
+    let response = await fetch(
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/62a055ba8d11baa796c213aa/cv"
+    );
+
+    console.log("responseData", response);
+    // open the response.url in a new tab
+    window.open(response.url);
   };
 
   return (
@@ -169,6 +189,13 @@ const MyProfile = () => {
               <button className="jumbotron-btn mr-2 rounded-pill text-center px-4">
                 More
               </button>
+              <Badge
+                variant="danger"
+                onClick={downloadPdf}
+                style={{ cursor: "pointer" }}
+              >
+                pdf
+              </Badge>
             </ButtonsClick>
           </Container>
           <Container className="mt-3">
@@ -232,7 +259,7 @@ const MyProfile = () => {
                 onChange={(e) =>
                   setProfileFormData({
                     ...profileFormData,
-                    name: e.target.value
+                    name: e.target.value,
                   })
                 }
               />
@@ -246,7 +273,7 @@ const MyProfile = () => {
                 onChange={(e) =>
                   setProfileFormData({
                     ...profileFormData,
-                    surname: e.target.value
+                    surname: e.target.value,
                   })
                 }
               />
@@ -260,7 +287,7 @@ const MyProfile = () => {
                 onChange={(e) =>
                   setProfileFormData({
                     ...profileFormData,
-                    email: e.target.value
+                    email: e.target.value,
                   })
                 }
               />
@@ -274,7 +301,7 @@ const MyProfile = () => {
                 onChange={(e) =>
                   setProfileFormData({
                     ...profileFormData,
-                    bio: e.target.value
+                    bio: e.target.value,
                   })
                 }
               />
@@ -288,7 +315,7 @@ const MyProfile = () => {
                 onChange={(e) =>
                   setProfileFormData({
                     ...profileFormData,
-                    title: e.target.value
+                    title: e.target.value,
                   })
                 }
               />
@@ -302,7 +329,7 @@ const MyProfile = () => {
                 onChange={(e) =>
                   setProfileFormData({
                     ...profileFormData,
-                    area: e.target.value
+                    area: e.target.value,
                   })
                 }
               />

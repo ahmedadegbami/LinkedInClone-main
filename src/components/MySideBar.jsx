@@ -67,7 +67,7 @@ const MySideBar = () => {
           <Card.Title className="font-weight-bold" style={{ fontSize: "16px" }}>
             People also viewed
           </Card.Title>
-          {profiles.splice(1, showmore).map((profile) => (
+          {profiles.splice(2, showmore).map((profile) => (
             <Row key={profile._id}>
               <Col sm={3}>
                 <Link to={"/details/" + profile.username + "/" + profile._id}>
@@ -105,7 +105,7 @@ const MySideBar = () => {
                     style={{
                       borderRadius: "50px",
                       fontSize: "16px",
-                      width: "100px"
+                      width: "100px",
                     }}
                     variant="outline-dark"
                     className="font-weight-bold mb-2 text-muted p-1"
@@ -192,7 +192,7 @@ const MySideBar = () => {
                     style={{
                       borderRadius: "50px",
                       fontSize: "16px",
-                      width: "100px"
+                      width: "100px",
                     }}
                     variant="outline-dark"
                     className="font-weight-bold mb-2 text-muted p-1"
