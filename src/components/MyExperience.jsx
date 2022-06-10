@@ -16,7 +16,8 @@ const MyExperience = () => {
     startDate: "",
     endDate: "",
     description: "",
-    area: ""
+    area: "",
+    user: "62a055ba8d11baa796c213aa",
   });
 
   useEffect(() => {
@@ -32,7 +33,7 @@ const MyExperience = () => {
   // this is the function that fetches user experience
   const fetchExperience = async () => {
     let response = await fetch(
-      "https://backend-linkedin-buildweek.herokuapp.com/profile/ahmed141/experiences"
+      "https://backend-linkedin-buildweek.herokuapp.com/experience/ahmed141"
       /*  {
         headers: {
           Authorization:
@@ -54,8 +55,8 @@ const MyExperience = () => {
           method: "POST",
           body: JSON.stringify(addExperience),
           headers: {
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
 
           /* headers: {
                Authorization:
@@ -80,12 +81,14 @@ const MyExperience = () => {
       if (response.ok) {
         console.log(response);
         alert("ok");
+        window.location.reload();
         setAddExperience({
           role: "",
           company: "",
           startDate: "",
           endDate: "",
-          area: ""
+          area: "",
+          user: "62a055ba8d11baa796c213aa",
         });
       } else {
         alert("error");
@@ -146,7 +149,11 @@ const MyExperience = () => {
               </Badge>
 
               <div>
-                <BiPlus size="1.5rem" onClick={handleShow} />
+                <BiPlus
+                  size="1.5rem"
+                  onClick={handleShow}
+                  style={{ cursor: "pointer" }}
+                />
               </div>
             </div>
             {experiences.map((experience) => (
@@ -187,7 +194,7 @@ const MyExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    company: e.target.value
+                    company: e.target.value,
                   })
                 }
               />
@@ -201,7 +208,7 @@ const MyExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    startDate: e.target.value
+                    startDate: e.target.value,
                   })
                 }
               />
@@ -215,7 +222,7 @@ const MyExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    endDate: e.target.value
+                    endDate: e.target.value,
                   })
                 }
               />
@@ -239,7 +246,7 @@ const MyExperience = () => {
                 onChange={(e) =>
                   setAddExperience({
                     ...addExperience,
-                    description: e.target.value
+                    description: e.target.value,
                   })
                 }
               />

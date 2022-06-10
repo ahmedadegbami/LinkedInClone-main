@@ -22,9 +22,14 @@ const NewsFeedProfile = () => {
       }
     );
     let profileData = await response.json();
-    // console.log(profileData);
+    if (response.ok) {
+      console.log("ahmed", profileData);
+    }
     setProfile(profileData);
   };
+
+  console.log("profile", profile);
+  console.log("profileimage", profile.image);
   return (
     <>
       <Wrapper>

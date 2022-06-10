@@ -12,7 +12,7 @@ import { FcLike } from "react-icons/fc";
 import { IoMdGlobe } from "react-icons/io";
 import TimeAgo from "javascript-time-ago";
 import ReactTimeAgo from "react-time-ago";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Modal, Container, Row, Col, Button } from "react-bootstrap";
 import en from "javascript-time-ago/locale/en.json";
 import { AiFillDelete } from "react-icons/ai";
@@ -37,6 +37,22 @@ const PostSection = ({ post }) => {
   const [showPostImage, setShowPostImage] = useState(null);
 
   const [editPost, setEditPost] = useState(post);
+  const [profile, setProfile] = useState({});
+
+  useEffect(() => {
+    profileData();
+  }, []);
+
+  const profileData = async () => {
+    let response = await fetch(
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/ahmed141"
+    );
+
+    let profileData = await response.json();
+    //this is the state that handles the adding user profile details
+    setProfile(profileData);
+    //this is the state that handles the editing of the profile details
+  };
 
   const fetchEditPost = async (e) => {
     e.preventDefault();
@@ -52,6 +68,7 @@ const PostSection = ({ post }) => {
     );
     if (response.ok) {
       alert("Post Edited Succesfully");
+      window.location.reload();
     }
   };
   //this function handles post image upload
@@ -69,6 +86,7 @@ const PostSection = ({ post }) => {
       }
     );
     if (response.ok) {
+      window.location.reload();
       alert("Image Uploaded Successfully");
     }
   };
@@ -86,6 +104,7 @@ const PostSection = ({ post }) => {
         }
       );
       if (response.ok) {
+        window.location.reload();
         alert("Deleted Succesfully");
       }
     } catch (error) {
@@ -99,14 +118,14 @@ const PostSection = ({ post }) => {
         <Wrapper>
           <Header>
             <img
-              src={post.user.image}
+              src={profile.image}
               className="skeleton-profile-pic skeleton"
             />
             <div>
               <h6 className="skeleton-name skeleton font-weight-bold">
-                {post.user.name} {post.user.surname}
+                {profile.name} {profile.surname}
               </h6>
-              <p>{post.user.title}</p>
+              <p>{profile.title}</p>
               <p className="d-inline mr-1 text-muted ">
                 <ReactTimeAgo
                   date={Date.parse(post.updatedAt)}
