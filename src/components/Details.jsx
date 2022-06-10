@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Badge } from "react-bootstrap";
 import React from "react";
 import styled from "styled-components";
 import { BiPencil } from "react-icons/bi";
@@ -30,6 +30,17 @@ const Details = () => {
     let profileData = await response.json();
 
     setProfile(profileData);
+  };
+
+  const downloadPdf = async () => {
+    let response = await fetch(
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/" +
+        params.id +
+        "/cv"
+    );
+    console.log("responseData", response);
+    // open the response.url in a new tab
+    window.open(response.url);
   };
 
   return (
@@ -94,6 +105,13 @@ const Details = () => {
                     <button className="jumbotron-btn mr-2 rounded-pill text-center px-4">
                       More
                     </button>
+                    <Badge
+                      variant="danger"
+                      onClick={downloadPdf}
+                      style={{ cursor: "pointer" }}
+                    >
+                      pdf
+                    </Badge>
                   </ButtonsClick>
                 </Container>
               </Body>
