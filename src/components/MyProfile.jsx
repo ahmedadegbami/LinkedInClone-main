@@ -59,6 +59,10 @@ const MyProfile = () => {
       }
     );
     console.log(response);
+    if (response.ok) {
+      alert("Profile Updated");
+      window.location.reload();
+    }
     setShow(false);
   };
 
@@ -82,6 +86,7 @@ const MyProfile = () => {
       );
 
       if (response.ok) {
+        window.location.reload();
         alert("Image Uploaded Successfully");
       }
     } catch (error) {
@@ -98,7 +103,11 @@ const MyProfile = () => {
               <Col></Col>
               <Col>
                 <div className=" d-flex justify-content-end mt-3">
-                  <BiPencil size="1.3rem" color="white" />
+                  <BiPencil
+                    size="1.3rem"
+                    color="white"
+                    style={{ cursor: "pointer" }}
+                  />
                 </div>
               </Col>
             </Row>
@@ -142,7 +151,11 @@ const MyProfile = () => {
               </Col>
               <Col md={4}>
                 <div className=" d-flex justify-content-end mb-3 text-muted">
-                  <BiPencil size="1.5rem" onClick={handleShow} />
+                  <BiPencil
+                    size="1.5rem"
+                    onClick={handleShow}
+                    style={{ cursor: "pointer" }}
+                  />
                 </div>
               </Col>
             </Row>
