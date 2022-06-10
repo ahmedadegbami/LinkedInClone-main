@@ -11,3 +11,7 @@
 <p>- Heroku</p>
 <p>You can see the backend project here:</p>
 <a href="https://github.com/razz1000/Backend_BuildWeek_3_LinkedIn">https://github.com/razz1000/Backend_BuildWeek_3_LinkedIn</a>
+<hr>
+<p>Screenshots from the Frontend: (and again - Test the frontend here: https://linked-in-clone-main.vercel.app/feed .</p>
+<img src="./Screenshot1.png">
+<img src="./Screenshot2.png">
