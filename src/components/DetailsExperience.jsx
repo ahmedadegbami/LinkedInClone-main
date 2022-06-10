@@ -1,7 +1,6 @@
-import { Card, Modal, Form, Button } from "react-bootstrap";
+import { Card, Modal, Form, Button, Badge } from "react-bootstrap";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { BiPlus } from "react-icons/bi";
 import SingleExperience from "./SingleExperience";
 import { useParams } from "react-router-dom";
 
@@ -127,10 +126,21 @@ const DetailsExperience = () => {
               >
                 Experience
               </Card.Title>
-              <Button onClick={downloadCSV}>CSV</Button>
-              <div>
-                <BiPlus size="1.5rem" onClick={handleShow} />
-              </div>
+              <Badge
+                variant="danger"
+                onClick={downloadPdf}
+                style={{ cursor: "pointer" }}
+              >
+                pdf
+              </Badge>
+
+              <Badge
+                variant="primary"
+                onClick={downloadCSV}
+                style={{ cursor: "pointer" }}
+              >
+                csv
+              </Badge>
             </div>
             {experiences.map((experience) => (
               <div key={experience._id}>

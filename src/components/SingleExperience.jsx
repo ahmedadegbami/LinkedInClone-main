@@ -1,5 +1,5 @@
 import { Row, Image, Col, Modal, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { parseISO, format } from "date-fns";
 import { BiPencil } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
@@ -8,6 +8,9 @@ import { useState } from "react";
 // this component displays a single experience
 
 const SingleExperience = ({ experience }) => {
+  const params = useParams();
+  // console.log("parrams", params.id);
+
   const [formData, setFormData] = useState(experience);
 
   const [showExpImage, setShowExpImage] = useState(null);
@@ -90,8 +93,10 @@ const SingleExperience = ({ experience }) => {
         }
       );
       if (response.ok) {
+        window.location = "/";
         alert("Deleted Succesfully");
       }
+      // navigate(-1);
     } catch (error) {
       console.log("Error");
     }
@@ -144,11 +149,13 @@ const SingleExperience = ({ experience }) => {
 
         <Col md={1}>
           <div className="">
-            <BiPencil
-              size="1.1rem"
-              color="black"
-              onClick={() => setShow(true)}
-            />
+            {!params.id && (
+              <BiPencil
+                size="1.1rem"
+                color="black"
+                onClick={() => setShow(true)}
+              />
+            )}
           </div>
         </Col>
       </Row>
@@ -249,6 +256,7 @@ const SingleExperience = ({ experience }) => {
                 }
               />
             </Form.Group>
+
             <Button variant="danger" onClick={handleDelete}>
               <AiFillDelete />
             </Button>
