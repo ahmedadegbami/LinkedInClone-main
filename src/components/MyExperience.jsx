@@ -17,6 +17,7 @@ const MyExperience = () => {
     endDate: "",
     description: "",
     area: "",
+    user: "62a055ba8d11baa796c213aa",
   });
 
   useEffect(() => {
@@ -87,6 +88,7 @@ const MyExperience = () => {
           startDate: "",
           endDate: "",
           area: "",
+          user: "62a055ba8d11baa796c213aa",
         });
       } else {
         alert("error");
