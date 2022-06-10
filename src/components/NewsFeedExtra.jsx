@@ -35,7 +35,7 @@ const NewsFeedExtra = () => {
           {profiles.splice(24, 3).map((profile) => (
             <Row key={profile._id}>
               <Col sm={3}>
-                <Link to={"/details/" + profile._id}>
+                <Link to={"/details/" + profile.username + "/" + profile._id}>
                   <Image
                     src={profile.image}
                     rounded
@@ -46,7 +46,7 @@ const NewsFeedExtra = () => {
               </Col>
               <Col sm={9}>
                 <div>
-                  <Link to={"/details/" + profile._id}>
+                  <Link to={"/details/" + profile.username + "/" + profile._id}>
                     <h6
                       className="font-weight-bold mb-0"
                       style={{ fontSize: "14px", lineHeight: "1.4" }}
