@@ -80,6 +80,7 @@ const MyExperience = () => {
       if (response.ok) {
         console.log(response);
         alert("ok");
+        window.location.reload();
         setAddExperience({
           role: "",
           company: "",
@@ -146,7 +147,11 @@ const MyExperience = () => {
               </Badge>
 
               <div>
-                <BiPlus size="1.5rem" onClick={handleShow} />
+                <BiPlus
+                  size="1.5rem"
+                  onClick={handleShow}
+                  style={{ cursor: "pointer" }}
+                />
               </div>
             </div>
             {experiences.map((experience) => (
