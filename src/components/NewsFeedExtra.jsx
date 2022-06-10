@@ -11,12 +11,12 @@ const NewsFeedExtra = () => {
 
   const fetchData = async () => {
     let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/",
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/",
       {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4"
-        }
+        // headers: {
+        //   Authorization:
+        //     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4"
+        // }
       }
     );
     let responseData = await response.json();
@@ -35,7 +35,7 @@ const NewsFeedExtra = () => {
           {profiles.splice(24, 3).map((profile) => (
             <Row key={profile._id}>
               <Col sm={3}>
-                <Link to={"/details/" + profile._id}>
+                <Link to={"/details/" + profile.username + "/" + profile._id}>
                   <Image
                     src={profile.image}
                     rounded
@@ -46,7 +46,7 @@ const NewsFeedExtra = () => {
               </Col>
               <Col sm={9}>
                 <div>
-                  <Link to={"/details/" + profile._id}>
+                  <Link to={"/details/" + profile.username + "/" + profile._id}>
                     <h6
                       className="font-weight-bold mb-0"
                       style={{ fontSize: "14px", lineHeight: "1.4" }}

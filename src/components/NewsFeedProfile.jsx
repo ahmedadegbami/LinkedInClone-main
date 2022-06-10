@@ -13,12 +13,12 @@ const NewsFeedProfile = () => {
   }, []);
   const profileData = async () => {
     let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/me",
+      "https://backend-linkedin-buildweek.herokuapp.com/profile/ahmed141",
       {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4"
-        }
+        // headers: {
+        //   Authorization:
+        //     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmYTk5NDJhMGU3YzAwMTUyYzQ4MWMiLCJpYXQiOjE2NTQ2MzA4MDUsImV4cCI6MTY1NTg0MDQwNX0.OVp2JLd0_Es7M18bEhhtQtak6V2R3zRVCRWNglktSw4"
+        // }
       }
     );
     let profileData = await response.json();
