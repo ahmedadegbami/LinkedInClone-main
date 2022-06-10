@@ -10,4 +10,4 @@
 <p>- MongDB</p>
 <p>- Heroku</p>
 <p>You can see the backend project here:</p>
-<a href="https://github.com/razz1000/Backend_BuildWeek_3_LinkedIn">
+<a href="https://github.com/razz1000/Backend_BuildWeek_3_LinkedIn">https://github.com/razz1000/Backend_BuildWeek_3_LinkedIn</a>
