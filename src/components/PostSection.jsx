@@ -6,7 +6,7 @@ import { BiLike } from "react-icons/bi";
 import {
   RiShareForwardLine,
   RiSendPlaneFill,
-  RiMoreFill
+  RiMoreFill,
 } from "react-icons/ri";
 import { FcLike } from "react-icons/fc";
 import { IoMdGlobe } from "react-icons/io";
@@ -62,12 +62,13 @@ const PostSection = ({ post }) => {
         method: "PUT",
         body: JSON.stringify(editPost),
         headers: {
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
       }
     );
     if (response.ok) {
       alert("Post Edited Succesfully");
+      window.location.reload();
     }
   };
   //this function handles post image upload
@@ -81,7 +82,7 @@ const PostSection = ({ post }) => {
         "/image",
       {
         method: "POST",
-        body: dataImage
+        body: dataImage,
       }
     );
     if (response.ok) {
@@ -98,8 +99,8 @@ const PostSection = ({ post }) => {
           method: "DELETE",
           body: JSON.stringify(editPost),
           headers: {
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
       if (response.ok) {
